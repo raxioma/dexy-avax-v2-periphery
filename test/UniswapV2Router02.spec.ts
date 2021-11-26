@@ -266,7 +266,7 @@ describe('fee-on-transfer tokens', () => {
   })
 
   // ETH -> DTT
-  it('swapExactETHForTokensSupportingFeeOnTransferTokens', async () => {
+  it('swapExactAVAXForTokensSupportingFeeOnTransferTokens', async () => {
     const DTTAmount = expandTo18Decimals(10)
       .mul(100)
       .div(99)
@@ -274,7 +274,7 @@ describe('fee-on-transfer tokens', () => {
     const swapAmount = expandTo18Decimals(1)
     await addLiquidity(DTTAmount, ETHAmount)
 
-    await router.swapExactETHForTokensSupportingFeeOnTransferTokens(
+    await router.swapExactAVAXForTokensSupportingFeeOnTransferTokens(
       0,
       [WETH.address, DTT.address],
       wallet.address,
@@ -287,7 +287,7 @@ describe('fee-on-transfer tokens', () => {
   })
 
   // DTT -> ETH
-  it('swapExactTokensForETHSupportingFeeOnTransferTokens', async () => {
+  it('swapExactTokensForAVAXSupportingFeeOnTransferTokens', async () => {
     const DTTAmount = expandTo18Decimals(5)
       .mul(100)
       .div(99)
@@ -297,7 +297,7 @@ describe('fee-on-transfer tokens', () => {
     await addLiquidity(DTTAmount, ETHAmount)
     await DTT.approve(router.address, MaxUint256)
 
-    await router.swapExactTokensForETHSupportingFeeOnTransferTokens(
+    await router.swapExactTokensForAVAXSupportingFeeOnTransferTokens(
       swapAmount,
       0,
       [DTT.address, WETH.address],
